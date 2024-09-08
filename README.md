@@ -11,6 +11,14 @@ GET-ADUser -Identity Administrator
 (Get-ADDomain).DistinguishedName
 ```
 
+- userAccountControl 은 생성 후 추가
+512 = Enabled
+514 = Disabled
+66048 = Enabled, password never expires
+66050 = Disabled, password never expires
+
+- userAccountControl은 생성시 삽입이 안되는가보당... 
+  - 정책을 설정해서 기본으로 Enabled로 바꿔서 처리하자
 
 - LDAP attribute List
 
@@ -21,3 +29,5 @@ GET-ADUser -Identity Administrator
 
 - LDAP account type
 [LDAP account type](https://www.ldap-account-manager.org/lamcms/supportedTypes)
+
+![img.png](img.png)

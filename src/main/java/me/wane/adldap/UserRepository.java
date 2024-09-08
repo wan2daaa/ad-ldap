@@ -14,4 +14,5 @@ public interface UserRepository extends LdapRepository<User> {
 
     List<User> findAllById(Name id);
 
+    Optional<User> findByIdAndUserPassword(Name id, byte[] userPassword);
 }

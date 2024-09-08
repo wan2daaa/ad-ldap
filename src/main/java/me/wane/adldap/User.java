@@ -16,8 +16,7 @@ import javax.naming.Name;
 @Entry(
         base = "DC=ad,DC=wan2daaa,DC=com",
         objectClasses = {
-                "organizationalPerson", "user",
-                "person", "top"
+                "top", "person", "organizationalPerson", "user"
         }
 )
 public class User {
@@ -31,11 +30,10 @@ public class User {
     private String sn;  // 이름
     private String mail;  // 이메일 주소
     private String sAMAccountName;
-//    private String userAccountControl;  // 사용자 계정 제어 (계정 상태)
+    private String accountExpires = "0";
 
 
     public User(Name id, String userPrincipalName, String userPassword, String displayName, String givenName, String sn, String mail, String sAMAccountName
-//            , String userAccountControl
     ) {
         this.id = id;
         this.userPrincipalName = userPrincipalName;
@@ -45,7 +43,6 @@ public class User {
         this.sn = sn;
         this.mail = mail;
         this.sAMAccountName = sAMAccountName;
-//        this.userAccountControl = userAccountControl;
     }
 
     public static User create(Name domainName, CreateUserRequest request, PasswordEncoder passwordEncoder) {
@@ -58,7 +55,6 @@ public class User {
                 request.name(),
                 request.email(),
                 request.email()
-//                "512" // NORMAL_ACCOUNT
         );
     }
 }

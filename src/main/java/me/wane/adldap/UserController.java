@@ -18,17 +18,17 @@ public class UserController {
     @PostMapping
     public String addUser(
             @RequestBody CreateUserRequest request
-            ) {
+    ) {
         userService.saveUser(request);
         return "User added successfully!";
     }
 
-    @GetMapping("/{cn}/password/{password}")
-    public Boolean isPasswordMatch(
+    @PatchMapping("/{cn}/password")
+    public Boolean updatePassword(
             @PathVariable String cn,
-            @PathVariable String password
+            @RequestParam String newPassword
     ) {
-        return userService.isPasswordMatch(cn, password);
+        return userService.updatePassword(cn, newPassword);
     }
 
     @GetMapping
@@ -39,5 +39,24 @@ public class UserController {
     @GetMapping("/{cn}")
     public User getUser(@PathVariable String cn) {
         return userService.findUserByCN(cn);
+    }
+
+    @PatchMapping("/{cn}")
+    public String updateUser(
+            @PathVariable String cn,
+            @RequestParam String newDisplayName,
+            @RequestParam String newEmail
+    ) {
+        userService.updateUser(cn, newDisplayName, newEmail);
+        return "User updated successfully!";
+    }
+
+    @GetMapping("/auth")
+    public boolean verifyUser(
+            @RequestParam String cn,
+            @RequestParam String password
+    ) {
+        log.info("cn: {}, password: {}", cn, password);
+        return userService.authenticate(cn, password);
     }
 }
