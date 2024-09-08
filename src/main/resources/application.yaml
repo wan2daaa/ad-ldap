@@ -1,1 +1,7 @@
 spring.application.name: ad-ldap
+spring:
+  ldap:
+    urls: ldap://3.39.187.187:389
+    username: CN=Administrator,CN=Users,DC=ad,DC=wan2daaa,DC=com
+    base: CN=Users,DC=ad,DC=wan2daaa,DC=com
+

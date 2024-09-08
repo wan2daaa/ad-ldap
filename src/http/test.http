@@ -1,9 +1,19 @@
 POST localhost:8080/users HTTP/1.1
 Content-Type: application/json
 
-//{
-//  "fullName": "John Doe",
-//  "lastName": "Doe",
-//  "username": "johndoe",
-//  "password": "password123!!"
-//}
+{
+  "cn": "jkj1238",
+  "password": "jkj1238!!",
+  "givenName":  "jkj1238",
+  "name": "jkj1238",
+  "email":  "jkj1238@naver.com"
+}
+###
+GET localhost:8080/users/jkj1230/password/jkj1238!!
+
+###
+GET localhost:8080/users/jkj1238
+
+###
+GET localhost:8080/users
+
